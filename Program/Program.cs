@@ -131,7 +131,7 @@ namespace Program
                     case "xlsm":
                     case "xltm":
                         // Excel
-                        new VisioConverter().Convert(inputFile, outputFile);
+                        new ExcelConverter().Convert(inputFile, outputFile);
                         break;
                     case "odp":
                     case "ppt":
