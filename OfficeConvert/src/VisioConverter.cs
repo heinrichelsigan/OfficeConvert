@@ -80,7 +80,7 @@ namespace OfficeConvert
                 }
                 catch (Exception e)
                 {
-                    Console.Error.WriteLine(e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
+                    Console.Error.WriteLine("VisioConverter releaseCOMObject(page): " + e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
                 }
             }
 
@@ -93,7 +93,7 @@ namespace OfficeConvert
                 }
                 catch (Exception e)
                 {
-                    Console.Error.WriteLine(e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
+                    Console.Error.WriteLine("VisioConverter releaseCOMObject(doc): " + e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
                 }
             }
 
@@ -105,7 +105,7 @@ namespace OfficeConvert
                 }
                 catch (Exception e)
                 {
-                    Console.Error.WriteLine(e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
+                    Console.Error.WriteLine("VisioConverter releaseCOMObject(docs): " + e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
                 }
             }
 
@@ -118,7 +118,7 @@ namespace OfficeConvert
                 }
                 catch (Exception e)
                 {
-                    Console.Error.WriteLine(e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
+                    Console.Error.WriteLine("VisioConverter releaseCOMObject(app): " + e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
                 }
             }
         }

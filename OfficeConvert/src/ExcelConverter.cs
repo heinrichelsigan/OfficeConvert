@@ -70,7 +70,7 @@ namespace OfficeConvert
                 }
                 catch (Exception e)
                 {
-
+                    Console.Error.WriteLine("ExcelConverter releaseCOMObject(book): " + e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
                 }
             }
 
@@ -83,7 +83,7 @@ namespace OfficeConvert
                 }
                 catch (Exception e)
                 {
-
+                    Console.Error.WriteLine("ExcelConverter releaseCOMObject(books): " + e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
                 }
             }
 
@@ -96,7 +96,7 @@ namespace OfficeConvert
                 }
                 catch (Exception e)
                 {
-
+                    Console.Error.WriteLine("ExcelConverter releaseCOMObject(app): " + e.Message + "\r\n" + e.ToString() + "\r\n" + e.StackTrace);
                 }
             }
         }
