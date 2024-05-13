@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using OfficeConvert;
 using System.Reflection;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Program
 {
@@ -33,8 +34,8 @@ namespace Program
         public static void Main(string[] args)
         {
             init();
-            
-            for (int i = 0; i < args.Length; i ++)
+
+            for (int i = 0; i < args.Length; i++)
             {
                 String arg = args[i];
                 if (arg.Substring(0, 2) == "--")
@@ -87,12 +88,18 @@ namespace Program
                 Environment.Exit(1);
             }
 
-            Regex fileMatch = new Regex(@"\.(((ppt|pps|pot|do[ct]|xls|xlt)[xm]?)|od[cpt]|rtf|csv|vsd[xm]?|pub|msg|vcf|ics|mpp|svg|txt|html?)$", RegexOptions.IgnoreCase);
+            Regex fileMatch = new Regex(@"\.(((ppt|pps|pot|do[ct]|xls|xlt)[xm]?)|od[cpt]|rtf|csv|vsd[xm]?|pub|msg|eml|vcf|ics|mpp|svg|txt|html?)$", RegexOptions.IgnoreCase);
             Match extMatch = fileMatch.Match(inputFile);
             if (!extMatch.Success)
             {
                 Console.WriteLine("Input file can not be handled. Must be Word, PowerPoint, Excel, Outlook, Publisher or Visio");
                 Environment.Exit(1);
+            }
+
+            if (!outputFile.ToLower().EndsWith(".pdf"))
+            {
+                Console.WriteLine($"Output file {outputFile} will not be accepted. It must end with \".pdf\"!");
+                Environment.Exit(2);
             }
 
             String extname = extMatch.Groups[1].ToString().ToLower();
@@ -124,7 +131,7 @@ namespace Program
                     case "xlsm":
                     case "xltm":
                         // Excel
-                        new ExcelConverter().Convert(inputFile, outputFile);
+                        new VisioConverter().Convert(inputFile, outputFile);
                         break;
                     case "odp":
                     case "ppt":
@@ -138,6 +145,14 @@ namespace Program
                     case "ppsm":
                         // Powerpoint
                         new PowerPointConverter().Convert(inputFile, outputFile);
+                        break;
+                    case "msg":
+                    case "eml":
+                        new OutlookConverter().Convert(inputFile, outputFile);
+                        break;
+                    case "vsd":
+                    case "vsdx":
+                        new VisioConverter().Convert(inputFile, outputFile);
                         break;
                 }
             }
