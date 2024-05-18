@@ -35,6 +35,9 @@ namespace OfficeConvert
                 docs = app.Documents;
                 doc = docs.Open(inputFile, false, true, false, nothing, nothing, true, nothing, nothing, nothing, nothing, false, false, nothing, true, nothing);
                 doc.ExportAsFixedFormat(outputFile, Word.WdExportFormat.wdExportFormatPDF, false, Word.WdExportOptimizeFor.wdExportOptimizeForOnScreen, Microsoft.Office.Interop.Word.WdExportRange.wdExportAllDocument, 1, 1, Word.WdExportItem.wdExportDocumentContent, false, false, Word.WdExportCreateBookmarks.wdExportCreateNoBookmarks, false, false, false, nothing);
+                //
+                // doc.Application.ActivePrinter = "name of printer";
+                // doc.PrintOut(/* ref options */);
             }
             catch (Exception e)
             {
